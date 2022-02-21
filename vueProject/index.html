@@ -1,0 +1,85 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-02-21 10:57:02
+ * @LastEditTime: 2022-02-21 13:47:28
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /vueProject/index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning Vue</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <style>
+      body {
+        background: #eee;
+        max-width: 960px;
+        margin: 20px auto;
+      }
+      p,h3,ul{
+          margin: 0;
+          padding: 0;
+      }
+      li{
+          list-style-type: none;
+          background: #fff;
+          margin: 20px auto;
+          padding: 10px 20px;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+      }
+      li.fav{
+          background: #ff9ed2;
+      }
+      .box {
+        padding: 100px 0;
+        width: 400px;
+        text-align: center;
+        background: #ddd;
+        margin: 20px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <h1>
+        Hello ,Vue :)
+    </h1> -->
+    <div id="app">
+      <a :href="url"> best website ever </a>
+      <div v-if="showBooks">
+        <ul>
+          <li v-for="book in filterdBooks" :class="{fav: book.isFav}" @click="clickToToggle(book)">
+            <img :src="book.img" :alt="book.title" />
+            <h3>{{book.title}}</h3>
+            <p>{{book.author}}</p>
+          </li>
+        </ul>
+        <!-- <p>{{ books[0].title }} -{{author}} - {{age}}</p>
+        <p>{{ books[1].title }} -{{author}} - {{age}}</p>
+        <p>{{ books[2].title }} -{{author}} - {{age}}</p> -->
+      </div>
+      <button v-on:click="age++">Increase age</button>
+      <button v-on:click="age--">decrease age</button>
+      <div @click="changeTitle('newbook')">Change book title</div>
+      <button @click="toggleShowBooks">
+        <span v-if="showBooks"> Hide Books </span>
+        <span v-else="!showBooks"> Show Books </span>
+      </button>
+      <div v-show="showBooks">currently showing books</div>
+      <br />
+      <div class="box" @mouseover="handleEvent(5)">mouseover (enter)</div>
+      <div class="box" @mouseleave="handleEvent(5)">mouseleave</div>
+      <div class="box" @dblclick="handleEvent(4)">double click</div>
+      <div class="box" @mousemove="handleMousemove">position -{{x}} {{y}}</div>
+    </div>
+  </body>
+</html>
+
+<script src="app.js"></script>
